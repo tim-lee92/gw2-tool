@@ -1,10 +1,10 @@
 <div id="gem_exchange_rates">
   <h3>Current gem exchange rates:</h3>
   <ul id="gem_rates">
-    <li>You can trade 100 gems for 21<i class="gw2_gold">g</i> 12<i class="gw2_silver">s</i</li>
-    <li>You can trade 33<i class="gw2_gold">g</i> 56<i class="gw2_silver">s</i> for 100 gems.</li>
+    <li>You can trade 100 gems for <%= format_coins(@gem_exchange_for_coins['quantity']).html_safe %></li>
+    <li>You can trade <%= format_coins(@coin_exchange_for_gems['coins_per_gem'] * 100).html_safe %> for 100 gems.</li>
     <li>Every 800 gems cost $10.00 USD</li>
-    <li>Every dollar gets you 15<i class="gw2_gold">g</i></li>
+    <li>Every dollar gets you <%= format_coins(@gem_exchange_for_coins['coins_per_gem'] * 80).html_safe %></li>
   </ul>
 </div>
 
@@ -14,4 +14,5 @@
     <li>A Sunrise off the trading post costs 3000<i class="gw2_gold">g</i> to buy. You would need to spend $200 USD to buy it</li>
     <li>A Eternity off the trading post costs 4500<i class="gw2_gold">g</i> to buy. You would need to spend $250 USD to buy it</li>
   </ul>
+  <%= @legendaries %>
 </div>

@@ -9,7 +9,7 @@
   <input type="text" placeholder="Search an item" />
 
   <div id="user_options">
-    <a href="#" class="btn btn-default">Sign In</a>
-    <a href="#" class="btn btn-default">Register</a>
+    <%= link_to "Sign In", sign_in_path, class: "btn btn-default" %>
+    <%= link_to "Register", new_user_path, class: "btn btn-default" %>
   </div>
 </nav>
