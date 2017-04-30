@@ -34,6 +34,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client'
 gem 'bootstrap-sass'
 gem 'pry'
+gem 'stripe'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

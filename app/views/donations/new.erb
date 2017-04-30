@@ -1,0 +1,19 @@
+<script src="https://js.stripe.com/v3/"></script>
+
+<%= form_tag({controller: 'donations', action: 'create'}, method: 'post', id: 'donations') do %>
+  <h3>Support what I do!</h3>
+  <span id="card-errors"></span>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <%= label_tag(:donation_amount, "Donation Amount") %>
+      <%= number_field(:donation_amount, "", class: "form-control") %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-8">
+      <label for="card-element">Credit Card Number</label>
+      <div id="card-element"></div>
+    </div>
+  </div>
+  <%= submit_tag "Confirm", class: "btn btn-primary" %>
+<% end %>
