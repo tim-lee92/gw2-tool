@@ -14,7 +14,7 @@
       <%= link_to "Register", new_user_path, class: "btn btn-default" %>
     <% else %>
       <span id="welcome_user">Hello <%= current_user.username %></span>
-      <%= link_to 'Sigh Out', sign_out_path, class: "btn btn-danger" %>
+      <%= link_to 'Sign Out', sign_out_path, class: "btn btn-danger" %>
     <% end %>
   </div>
 </nav>

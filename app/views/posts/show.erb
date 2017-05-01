@@ -1,0 +1,10 @@
+<div id="post">
+  <h3 id="post_title"><%= @post.title %></h3>
+  <p id="post_body"><%= @post.body %></p>
+  <p id="post_author"><%= "Posted by #{@post.user.username}" %></p>
+  <% if current_user == @post.user %>
+    <div id="post_options">
+      <%= link_to "Delete", post_path(@post), method: :delete  %>
+    </div>
+  <% end %>
+</div>

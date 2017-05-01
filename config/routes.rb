@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get 'sign_out', to: 'sessions#destroy'
   get 'donate', to: 'donations#new'
   post 'donate', to: 'donations#create'
+
+  resources :posts, except: [:edit, :update]
 end

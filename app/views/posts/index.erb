@@ -1,0 +1,13 @@
+<div id="threads">
+  <%= link_to "New Thread", new_post_path, class: "btn btn-primary" %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <div class="thread_details">
+          <h4><%= link_to post.title, post_path(post.id) %><small><%= " on #{post.created_at} by #{post.user.username}" %></small></h4>
+          <p>10 Comments</p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

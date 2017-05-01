@@ -33,4 +33,10 @@ describe User do
     user2 = User.create(username: 'JaCKy2', email: 'jACKy@example.com', password: 'password')
     expect(User.count).to eq(1)
   end
+
+  # it 'should have many donations' do
+  #   expect(User).to have_many(:donations)
+  # end
+
+  # it { should have_many(:donations) }
 end

@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to sign_in_path, flash: { notice: 'You have successfully registered!'}
     else
-      flash[:error] = 'Please check the following fields'
+      @errors = @user.errors
+      flash[:error] = 'Please check the following fields:'
       render :new
     end
   end

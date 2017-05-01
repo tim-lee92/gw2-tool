@@ -17,7 +17,7 @@ describe SessionsController do
 
       it 'shows the success message' do
         post :create, params: { username: lily.username, password: lily.password }
-        expect(flash[:success]).not_to be_nil
+        expect(flash[:notice]).not_to be_nil
       end
     end
 

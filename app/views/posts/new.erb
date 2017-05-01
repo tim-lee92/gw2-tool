@@ -1,0 +1,16 @@
+<%= form_for(@post) do |f| %>
+  <h3>Create a thread:</h3>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label(:title, "Title") %>
+      <%= f.text_field(:title, class: "form-control") %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label(:body, "Content") %>
+      <%= f.text_area(:body, row: 6, class: "form-control") %>
+    </div>
+  </div>
+  <%= f.submit("Create thread", class: "btn btn-default") %>
+<% end %>

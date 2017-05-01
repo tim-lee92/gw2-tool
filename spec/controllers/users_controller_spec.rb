@@ -20,7 +20,7 @@ describe UsersController do
       end
 
       it 'sets the success message' do
-        expect(flash[:success]).to be_present
+        expect(flash[:notice]).to be_present
       end
     end
 
