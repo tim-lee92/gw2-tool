@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   get 'donate', to: 'donations#new'
   post 'donate', to: 'donations#create'
 
-  resources :posts, except: [:edit, :update]
+  resources :posts, except: [:edit, :update] do
+    resources :comments, only: [:create, :destroy]
+  end
 end

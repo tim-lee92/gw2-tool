@@ -8,3 +8,22 @@
     </div>
   <% end %>
 </div>
+
+<div id="comments">
+  <div class="row">
+    <div class="form-group col-md-8">
+      <%= form_for([@post, @comment]) do |f| %>
+        <%= f.text_area(:body, row: 6, class: "form-control") %>
+        <%= f.submit("Comment", class: "btn btn-default") %>
+      <% end %>
+    </div>
+  </div>
+  <ul>
+    <% @comments.each do |comment| %>
+      <li>
+        <p><%= comment.body %></p>
+        <p><%= "Posted by #{comment.user.username} on #{comment.created_at}" %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

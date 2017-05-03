@@ -19,6 +19,22 @@ describe PostsController do
       get :show, params: { id: post.id }
       expect(assigns(:post)).to eq(post)
     end
+
+    it 'sets @comment' do
+      lily = Fabricate(:user)
+      post = Fabricate(:post, user: lily)
+      get :show, params: { id: post.id }
+      expect(assigns(:comment)).to be_instance_of(Comment)
+    end
+
+    it 'sets @comments' do
+      lily = Fabricate(:user)
+      post = Fabricate(:post, user: lily)
+      comment1 = Fabricate(:comment, user: lily, post: post)
+      comment2 = Fabricate(:comment, user: lily, post: post)
+      get :show, params: { id: post.id }
+      expect(assigns(:comments)).to match_array([comment1, comment2])
+    end
   end
 
   describe 'GET new' do
