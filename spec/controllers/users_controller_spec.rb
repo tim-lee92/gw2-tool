@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe UsersController do
+  after { ActionMailer::Base.deliveries.clear }
+  
   describe 'GET new' do
     it 'sets @user' do
       get :new
@@ -21,6 +23,18 @@ describe UsersController do
 
       it 'sets the success message' do
         expect(flash[:notice]).to be_present
+      end
+    end
+
+    context 'email sending' do
+      before { post :create, params: { user: Fabricate.attributes_for(:user) } }
+
+      it 'sends out the email' do
+        expect(ActionMailer::Base.deliveries.count).to eq(1)
+      end
+
+      it 'sends to the right recipient' do
+        expect(ActionMailer::Base.deliveries.last.to).to eq([User.first.email])
       end
     end
 

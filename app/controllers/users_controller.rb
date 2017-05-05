@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).permit(:username, :email, :password))
     if @user.save
+      ApplicationMailer.send_welcome_email(@user).deliver
       redirect_to sign_in_path, flash: { notice: 'You have successfully registered!'}
     else
       @errors = @user.errors

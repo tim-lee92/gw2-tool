@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   resources :posts, except: [:edit, :update] do
     resources :comments, only: [:create, :destroy]
   end
+
+  get 'forgot_password', to: 'forgot_passwords#new'
+  resources :forgot_passwords, only: [:create]
 end

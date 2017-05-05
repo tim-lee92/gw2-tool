@@ -1,0 +1,10 @@
+<%= form_tag forgot_passwords_path, class: "form-group" do %>
+  <p>Please enter your email to reset your password. You will receive an email with instructions.</p>
+  <div class="row">
+    <div class="col-md-6">
+      <%= label_tag(:email, "Email Address") %>
+      <%= text_field_tag :email, "", class: "form-control" %>
+    </div>
+  </div>
+  <%= submit_tag("Send", class: "btn btn-default") %>
+<% end %>
