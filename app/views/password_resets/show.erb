@@ -1,0 +1,16 @@
+<%= form_for(@user, url: password_resets_path, method: :create) do |f| %>
+  <%= hidden_field_tag(:token, @user.token) %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label(:password, "New Password") %>
+      <%= f.password_field(:password, class: "form-control") %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label(:password_confirmation, "Confirm New Password") %>
+      <%= f.password_field(:password_confirmation, class: "form-control") %>
+    </div>
+  </div>
+  <%= f.submit("Change Password", class: "btn btn-default") %>
+<% end %>

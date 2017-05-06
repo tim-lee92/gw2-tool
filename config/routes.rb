@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   get 'forgot_password', to: 'forgot_passwords#new'
   resources :forgot_passwords, only: [:create]
+  resources :password_resets, only: [:show, :create]
+  get 'expired_token', to: 'password_resets#expired_token'
 end

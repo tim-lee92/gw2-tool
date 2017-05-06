@@ -21,6 +21,11 @@ describe ForgotPasswordsController do
         expect(assigns(:user)).to eq(lily)
       end
 
+      it 'sets a token for the user' do
+        post :create, params: { email: lily.email }
+        expect(User.first.token).to be_present
+      end
+
       it 'redirects to the sign in path' do
         post :create, params: { email: lily.email }
         expect(response).to redirect_to(sign_in_path)
@@ -33,9 +38,24 @@ describe ForgotPasswordsController do
     end
 
     context 'with an unexisting email address' do
-      it 'renders the :new template'
-      it 'does not send an email'
-      it 'sets the error'
+      it 'renders the :new template' do
+        post :create, params: { email: 'non_existant_email@example.com' }
+        expect(response).to render_template(:new)
+      end
+
+      it 'does not send an email' do
+        post :create, params: { email: 'non_existant_email@example.com' }
+        expect(ActionMailer::Base.deliveries.count).to eq(0)
+      end
+
+      it 'sets the error' do
+        post :create, params: { email: 'non_existant_email@example.com' }
+        expect(flash[:error]).to eq('We were not able to locate a user associated with that email address.')
+      end
     end
+  end
+
+  describe 'GET new_password' do
+    let(:lily) { Fabricate(:user) }
   end
 end

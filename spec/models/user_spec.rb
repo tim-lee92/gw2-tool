@@ -34,9 +34,13 @@ describe User do
     expect(User.count).to eq(1)
   end
 
-  # it 'should have many donations' do
-  #   expect(User).to have_many(:donations)
-  # end
+  it { should validate_confirmation_of(:password) }
 
-  # it { should have_many(:donations) }
+  describe 'generate_token' do
+    it 'generates a token for the user' do
+      lily = Fabricate(:user)
+      lily.generate_token
+      expect(User.first.token).to be_present
+    end
+  end
 end

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:username, :email, :password))
+    @user = User.new(params.require(:user).permit(:username, :email, :password, :password_confirmation))
     if @user.save
       ApplicationMailer.send_welcome_email(@user).deliver
       redirect_to sign_in_path, flash: { notice: 'You have successfully registered!'}
