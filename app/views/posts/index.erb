@@ -4,7 +4,7 @@
     <% @posts.each do |post| %>
       <li>
         <div class="thread_details">
-          <h4><%= link_to post.title, post_path(post.id) %><small><%= " on #{post.created_at} by #{post.user.username}" %></small></h4>
+          <h4><%= link_to post.title, post_path(post.id) %><small title="<%= post.created_at %>"><%= " #{time_ago_in_words(post.created_at)} ago by #{post.user.username}" %></small></h4>
           <p><%= post.comments.count %> comments</p>
         </div>
       </li>

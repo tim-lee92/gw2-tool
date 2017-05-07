@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, confirmation: true
 
   has_many :donations
+  has_many :posts
+  has_many :comments
 
   def generate_token
     self.update_column(:token, SecureRandom.urlsafe_base64)

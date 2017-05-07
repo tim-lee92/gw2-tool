@@ -35,6 +35,8 @@ describe User do
   end
 
   it { should validate_confirmation_of(:password) }
+  it { should have_many(:posts) }
+  it { should have_many(:comments) }
 
   describe 'generate_token' do
     it 'generates a token for the user' do
