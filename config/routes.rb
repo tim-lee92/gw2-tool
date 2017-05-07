@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'expired_token', to: 'password_resets#expired_token'
 
   get 'profile', to: 'profiles#show'
+  patch 'profile', to: 'profiles#change_password'
   get 'profile/my_posts', to: 'profiles#my_posts'
   get 'profile/my_comments', to: 'profiles#my_comments'
 end
