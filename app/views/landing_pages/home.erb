@@ -11,13 +11,15 @@
 <div id="legendary_for_gems">
   <h3>How much would a legendary cost in real money?</h3>
   <ul>
-    <% @legendary_trading_post_prices.each do |legendary_item| %>
-      <% legendary = @legendary_items.find {|item| item['id'] == legendary_item['id']} %>
-      <% coins = legendary_item['sells'].first['unit_price'].to_i %>
-      <li>
-        <h5>A <img src="<%= legendary["icon"] %>" class="item_icon" /><%= ("\"#{legendary['name']}\" off the trading post costs " + format_coins(coins)).html_safe %>.</h5>
-        <p>It would cost you <%= (coins / @gem_exchange_for_coins['quantity'].to_f * 100).round %> gems, which is equivalent to <span class="usd">$<%= ((coins / @gem_exchange_for_coins['quantity'].to_f * 100) / 800 * 10).round(2) %> USD</span> with current exchange rates.</p>
-      </li>
+    <% if !Rails.env.test? %>
+      <% @legendary_trading_post_prices.each do |legendary_item| %>
+        <% legendary = @legendary_items.find {|item| item['id'] == legendary_item['id']} %>
+        <% coins = legendary_item['sells'].first['unit_price'].to_i %>
+        <li>
+          <h5>A <img src="<%= legendary["icon"] %>" class="item_icon" /><%= ("\"#{legendary['name']}\" off the trading post costs " + format_coins(coins)).html_safe %>.</h5>
+          <p>It would cost you <%= (coins / @gem_exchange_for_coins['quantity'].to_f * 100).round %> gems, which is equivalent to <span class="usd">$<%= ((coins / @gem_exchange_for_coins['quantity'].to_f * 100) / 800 * 10).round(2) %> USD</span> with current exchange rates.</p>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
