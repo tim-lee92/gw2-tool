@@ -143,4 +143,13 @@ describe ProfilesController do
       end
     end
   end
+
+  describe 'GET my_donations' do
+    it 'sets @user' do
+      lily = Fabricate(:user)
+      session[:user_id] = lily.id
+      get :my_donations
+      expect(assigns(:user)).to eq(lily)
+    end
+  end
 end

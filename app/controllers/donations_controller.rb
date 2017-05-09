@@ -4,7 +4,7 @@ class DonationsController < ApplicationController
 
   def create
     token = params[:stripeToken]
-    amount = params[:donation_amount][0].to_i
+    amount = params[:donation_amount][0].to_i * 100
 
     charge = StripeWrapper::Charge.create(
       amount: amount,
@@ -13,7 +13,7 @@ class DonationsController < ApplicationController
     )
 
     if charge.successful?
-      # Payment.create(user: current_user || 'Anonymous', amount: amount, )
+      Donation.create(user: current_user, amount: amount, stripe_transaction_id: charge.response.id)
       flash[:notice] = 'Thank\'s for your support!'
       redirect_to home_path
     else

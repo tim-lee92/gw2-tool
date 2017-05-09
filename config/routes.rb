@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   patch 'profile', to: 'profiles#change_password'
   get 'profile/my_posts', to: 'profiles#my_posts'
   get 'profile/my_comments', to: 'profiles#my_comments'
+  get 'profile/my_donations', to: 'profiles#my_donations'
 end

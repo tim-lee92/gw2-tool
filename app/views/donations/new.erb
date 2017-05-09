@@ -6,7 +6,7 @@
   <div class="row">
     <div class="form-group col-md-4">
       <%= label_tag(:donation_amount, "Donation Amount") %>
-      <%= number_field(:donation_amount, "", class: "form-control") %>
+      <%= number_field(:donation_amount, "", class: "form-control", step: '0.01') %>
     </div>
   </div>
   <div class="row">

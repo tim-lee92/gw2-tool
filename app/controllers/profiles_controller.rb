@@ -13,6 +13,10 @@ class ProfilesController < ApplicationController
     @user = current_user
   end
 
+  def my_donations
+    @user = current_user
+  end
+
   def change_password
     @user = current_user
     permitted_params = params.require(:user).permit(:password, :password_confirmation)
